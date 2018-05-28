@@ -1,0 +1,18 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "env": {
+      "browser": true,
+      "node": true
+  },
+  "rules": {
+    "global-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-filename-extension": "off",
+    "jsx-a11y/anchor-is-valid": ["error", {
+      "components": ["Link"],
+      "specialLink": ["to"],
+      "aspects": ["noHref", "invalidHref", "preferButton"]
+    }]
+  }
+}
