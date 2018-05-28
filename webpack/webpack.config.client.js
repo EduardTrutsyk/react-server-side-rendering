@@ -7,6 +7,7 @@ const common = require('./webpack.config.common');
 const isDevMod = process.env.NODE_ENV === 'development';
 
 module.exports = merge(common, {
+  name: 'client',
   target: 'web',
 
   entry: [
