@@ -9,6 +9,7 @@ function renderHTML(html) {
         <head>
           <meta charset=utf-8>
           <title>React Server Side Rendering</title>
+          ${process.env.NODE_ENV === 'development' ? '' : '<link href="/css/main.css" rel="stylesheet" type="text/css">'}
         </head>
         <body>
           <div id="root">${html}</div>
