@@ -41,19 +41,26 @@ export default function serverRenderer() {
       />
     );
 
-    const htmlString = renderToString(root);
+    store.runSaga().done.then(() => {
+      const htmlString = renderToString(root);
 
-    // context.url will contain the URL to redirect to if a <Redirect> was used
-    if (context.url) {
-      res.writeHead(302, {
-        Location: context.url,
-      });
-      res.end();
-      return;
-    }
+      // context.url will contain the URL to redirect to if a <Redirect> was used
+      if (context.url) {
+        res.writeHead(302, {
+          Location: context.url,
+        });
+        res.end();
+        return;
+      }
 
-    const preloadedState = store.getState();
+      const preloadedState = store.getState();
 
-    res.send(renderHTML(htmlString, preloadedState));
+      res.send(renderHTML(htmlString, preloadedState));
+    });
+
+    // Do first render, starts initial actions.
+    renderToString(root);
+    // When the first render is finished, send the END action to redux-saga.
+    store.close();
   };
 }

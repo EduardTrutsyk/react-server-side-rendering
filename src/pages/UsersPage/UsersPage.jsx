@@ -21,13 +21,13 @@ class UsersPage extends PureComponent {
    *
    * @link https://github.com/reactjs/reactjs.org/issues/727
    */
-  // componentWillMount() {
-  //   this.props.fetchUsers();
-  // }
-
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchUsers();
   }
+
+  // componentDidMount() {
+  //   this.props.fetchUsers();
+  // }
 
   render() {
     const { loading, users } = this.props;
