@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Hello.css';
+import styles from './Hello.css';
 
 const Hello = ({ name }) => (
-  <div>Hello <b className="name">{name}</b></div>
+  <div>Hello <b className={styles.name}>{name}</b></div>
 );
 
 Hello.propTypes = {
