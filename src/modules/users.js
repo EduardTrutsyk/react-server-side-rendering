@@ -28,7 +28,7 @@ export function fetchUsers() {
   return (dispatch) => {
     dispatch(fetchUsersAction());
 
-    fetch('http://jsonplaceholder.typicode.com/users')
+    fetch('https://api.github.com/repos/facebook/react/contributors')
       .then(res => res.json())
       .then(users => dispatch(updateUsers(users)));
   };
@@ -38,7 +38,7 @@ export function fetchUserById(userId) {
   return (dispatch) => {
     dispatch(fetchUserByIdAction());
 
-    fetch(`http://jsonplaceholder.typicode.com/users/${userId}`)
+    fetch(`https://api.github.com/users/${userId}/repos`)
       .then(res => res.json())
       .then(users => dispatch(updateCurrentUser(users)));
   };
