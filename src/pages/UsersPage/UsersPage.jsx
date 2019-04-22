@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Hello from '../../components/Hello';
 import styles from './UsersPage.css';
@@ -22,8 +22,9 @@ const UsersPage = ({ loading, users, fetchUsers }) => {
     <div>
       <h2 className={styles.title}>Users Page</h2>
       <Hello name="you are on Users Page" />
-      <Loader loading={loading} />
-      <Users users={users} />
+      <Suspense fallback={<Loader loading />}>
+        <Users users={users} />
+      </Suspense>
     </div>
   );
 };
