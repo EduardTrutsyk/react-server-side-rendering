@@ -5,10 +5,7 @@ import styles from './UserPage.css';
 
 class UserPage extends PureComponent {
   static propTypes = {
-    user: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
+    user: PropTypes.arrayOf(PropTypes.shape({})),
   };
 
   static defaultProps = {
