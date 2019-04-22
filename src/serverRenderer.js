@@ -32,7 +32,7 @@ export default function serverRenderer() {
     // This context object contains the results of the render
     const context = {};
 
-    const root = (
+    const renderRoot = () => (
       <Root
         context={context}
         location={req.url}
@@ -42,7 +42,7 @@ export default function serverRenderer() {
     );
 
     store.runSaga().done.then(() => {
-      const htmlString = renderToString(root);
+      const htmlString = renderToString(renderRoot());
 
       // context.url will contain the URL to redirect to if a <Redirect> was used
       if (context.url) {
@@ -59,7 +59,7 @@ export default function serverRenderer() {
     });
 
     // Do first render, starts initial actions.
-    renderToString(root);
+    renderToString(renderRoot());
     // When the first render is finished, send the END action to redux-saga.
     store.close();
   };

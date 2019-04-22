@@ -27,7 +27,7 @@ export const updateCurrentUser = user => ({
 
 // Sagas
 export function* fetchUsersAsync() {
-  const response = yield call(fetch, 'http://jsonplaceholder.typicode.com/users');
+  const response = yield call(fetch, 'https://api.github.com/repos/facebook/react/contributors');
   const users = yield response.json();
 
   yield put(updateUsers(users));
@@ -37,7 +37,7 @@ export function* watchFetchUsers() {
 }
 
 export function* fetchUserByIdAsync(action) {
-  const response = yield call(fetch, `http://jsonplaceholder.typicode.com/users/${action.payload}`);
+  const response = yield call(fetch, `https://api.github.com/users/${action.payload}/repos`);
   const user = yield response.json();
 
   yield put(updateCurrentUser(user));
@@ -64,6 +64,7 @@ const INITIAL_STATE = {
 export const usersReduces = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case FETCH_USERS:
+    case FETCH_USER_BY_ID:
       return {
         ...state,
         loading: true,

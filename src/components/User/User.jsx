@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const User = ({ item }) => (
   <div className="user">
-    <Link to={`/users/${item.id}`}>{item.name}</Link>
+    <Link to={`/users/${item.login}`}>{item.login}</Link>
   </div>
 );
 
