@@ -32,7 +32,7 @@ export default function serverRenderer() {
     // This context object contains the results of the render
     const context = {};
 
-    const root = (
+    const renderRoot = () => (
       <Root
         context={context}
         location={req.url}
@@ -41,7 +41,7 @@ export default function serverRenderer() {
       />
     );
 
-    const htmlString = renderToString(root);
+    renderToString(renderRoot());
 
     // context.url will contain the URL to redirect to if a <Redirect> was used
     if (context.url) {
@@ -52,6 +52,7 @@ export default function serverRenderer() {
       return;
     }
 
+    const htmlString = renderToString(renderRoot());
     const preloadedState = store.getState();
 
     res.send(renderHTML(htmlString, preloadedState));

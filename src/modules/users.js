@@ -54,6 +54,7 @@ const INITIAL_STATE = {
 export const usersReduces = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case FETCH_USERS:
+    case FETCH_USER_BY_ID:
       return {
         ...state,
         loading: true,
