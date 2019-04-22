@@ -9,10 +9,7 @@ class UserPage extends PureComponent {
     fetchUserById: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
     loading: PropTypes.bool.isRequired,
-    user: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
+    user: PropTypes.arrayOf(PropTypes.shape({})),
   };
 
   static defaultProps = {

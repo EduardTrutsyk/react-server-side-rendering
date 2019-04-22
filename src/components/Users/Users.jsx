@@ -12,10 +12,7 @@ const Users = ({ users }) => (
 );
 
 Users.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-  })).isRequired,
+  users: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Users;
